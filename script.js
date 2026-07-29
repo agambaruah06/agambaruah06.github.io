@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // custom select variables
   const select = document.querySelector("[data-select]");
   const selectItems = document.querySelectorAll("[data-select-item]");
-  const selectValue = document.querySelector("[data-selecct-value]");
+  const selectValue = document.querySelector("[data-select-value]");
   const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
   if (select) {
@@ -117,6 +117,75 @@ function filterFunc(selectedValue) {
   }
 
   
+
+  // project detail modal logic
+  const projectItems = document.querySelectorAll(".project-item");
+  const projModalContainer = document.querySelector("[data-project-modal-container]");
+  const projModalCloseBtn = document.querySelector("[data-project-modal-close-btn]");
+  const projOverlay = document.querySelector("[data-project-overlay]");
+  const projModalImg = document.querySelector("[data-project-modal-img]");
+  const projModalTitle = document.querySelector("[data-project-modal-title]");
+  const projModalCategory = document.querySelector("[data-project-modal-category]");
+  const projModalText = document.querySelector("[data-project-modal-text]");
+  const projModalLink = document.querySelector("[data-project-modal-link]");
+
+  const toggleProjModal = function () {
+    if (projModalContainer && projOverlay) {
+      projModalContainer.classList.toggle("active");
+      projOverlay.classList.toggle("active");
+    }
+  };
+
+  projectItems.forEach(item => {
+    item.addEventListener("click", function (e) {
+      const link = this.querySelector("a");
+      const href = link ? link.getAttribute("href") : null;
+      
+      // If project has an external PDF or Instagram link, allow modal preview with link
+      e.preventDefault();
+
+      const img = this.querySelector(".project-img img");
+      const title = this.querySelector(".project-title");
+      const categories = this.querySelectorAll(".project-category");
+
+      if (img && projModalImg) {
+        projModalImg.src = img.src;
+        projModalImg.alt = img.alt || "Project preview";
+      }
+
+      if (title && projModalTitle) {
+        projModalTitle.innerText = title.innerText;
+      }
+
+      let categoryText = "Project";
+      let descText = "";
+
+      if (categories.length > 1) {
+        descText = categories[0].innerText;
+        categoryText = categories[1].innerText;
+      } else if (categories.length === 1) {
+        categoryText = categories[0].innerText;
+        descText = title ? title.innerText : "";
+      }
+
+      if (projModalCategory) projModalCategory.innerText = categoryText;
+      if (projModalText) projModalText.innerText = descText;
+
+      if (projModalLink) {
+        if (href && href !== "#" && href !== "") {
+          projModalLink.href = href;
+          projModalLink.style.display = "inline-flex";
+        } else {
+          projModalLink.style.display = "none";
+        }
+      }
+
+      toggleProjModal();
+    });
+  });
+
+  if (projModalCloseBtn) projModalCloseBtn.addEventListener("click", toggleProjModal);
+  if (projOverlay) projOverlay.addEventListener("click", toggleProjModal);
 
   const navigationLinks = document.querySelectorAll("[data-nav-link]");
   const pages = document.querySelectorAll("[data-page]");
