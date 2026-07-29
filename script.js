@@ -205,4 +205,91 @@ function filterFunc(selectedValue) {
       window.scrollTo(0, 0);
     });
   });
+
+  // Interactive Mouse Cursor Radial Glow & Cosmic Starlight Particle Trail
+  const canvas = document.getElementById("bg-glow-canvas");
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    let mouseX = width / 2;
+    let mouseY = height / 2;
+    let targetMouseX = width / 2;
+    let targetMouseY = height / 2;
+    let particles = [];
+
+    window.addEventListener("resize", () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      targetMouseX = e.clientX;
+      targetMouseY = e.clientY;
+
+      // Spawn subtle starlight particles along cursor movement
+      if (Math.random() < 0.6) {
+        particles.push({
+          x: e.clientX + (Math.random() - 0.5) * 8,
+          y: e.clientY + (Math.random() - 0.5) * 8,
+          radius: Math.random() * 2 + 1,
+          alpha: 0.6,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: (Math.random() - 0.5) * 0.8,
+          color: Math.random() > 0.4 ? "255, 217, 102" : "56, 189, 248" // Warm gold or cyan
+        });
+      }
+    });
+
+    function animateGlow() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Smooth inertia lerp for cursor spotlight
+      mouseX += (targetMouseX - mouseX) * 0.08;
+      mouseY += (targetMouseY - mouseY) * 0.08;
+
+      // Draw subtle ambient radial spotlight centered at mouse position
+      const gradientRadius = 380;
+      const gradient = ctx.createRadialGradient(
+        mouseX,
+        mouseY,
+        0,
+        mouseX,
+        mouseY,
+        gradientRadius
+      );
+      gradient.addColorStop(0, "rgba(255, 217, 102, 0.12)"); // Starlight gold center
+      gradient.addColorStop(0.35, "rgba(56, 189, 248, 0.05)"); // Cosmic cyan aura
+      gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(mouseX, mouseY, gradientRadius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Render and update cosmic particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= 0.015;
+        p.radius *= 0.97;
+
+        if (p.alpha <= 0 || p.radius <= 0.2) {
+          particles.splice(i, 1);
+          continue;
+        }
+
+        ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animateGlow);
+    }
+
+    animateGlow();
+  }
 });
