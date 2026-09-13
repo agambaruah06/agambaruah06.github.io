@@ -312,6 +312,18 @@
         <header>
           <h2 class="h2 article-title">Resume</h2>
         </header>
+
+        <div class="resume-download-wrapper" style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; margin-top: 15px;">
+          <a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer" class="pub-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 12px; background: var(--border-gradient-onyx); color: var(--orange-yellow-crayola); font-size: var(--fs-6); font-weight: var(--fw-500); border: 1px solid var(--jet); transition: var(--transition-1); box-shadow: var(--shadow-1);">
+            <ion-icon name="document-text-outline" style="font-size: 18px;"></ion-icon>
+            <span>Download CV (PDF)</span>
+          </a>
+          <a href="assets/transcript.pdf" target="_blank" rel="noopener noreferrer" class="pub-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 12px; background: var(--border-gradient-onyx); color: var(--orange-yellow-crayola); font-size: var(--fs-6); font-weight: var(--fw-500); border: 1px solid var(--jet); transition: var(--transition-1); box-shadow: var(--shadow-1);">
+            <ion-icon name="school-outline" style="font-size: 18px;"></ion-icon>
+            <span>Download Transcript (PDF)</span>
+          </a>
+        </div>
+
         <section class="timeline">
 
           <div class="title-wrapper">
@@ -383,14 +395,34 @@
 
             <li class="timeline-item">
 
+              <h4 class="h4 timeline-item-title">Semester Research Project - IISER Pune</h4>
+
+              <span>August 2026 – Present</span>
+
+              <p class="timeline-text">
+                <ul>
+                  <li>Under the supervision of Prof. Joy Merwin Monteiro, Department of Earth & Climate Sciences / Physics, IISER Pune.</li>
+                  <li>Developing an idealized numerical model of tropical monsoon dynamics and atmospheric general circulation using CliMT (Climate Modelling Toolkit) and Sympl.</li>
+                  <li>Simulating dynamical sensitivity to land-ocean thermal contrasts, surface heat capacities, moisture availability, and slab-ocean heat transport profiles.</li>
+                  <li>Investigating tropical atmospheric transitions, ITCZ seasonal migrations, and moisture-radiation feedbacks in idealized GCM frameworks.</li>
+                </ul>
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
               <h4 class="h4 timeline-item-title">Summer Research Fellow - Indian Institute of Science (IISc), Bengaluru</h4>
 
-              <span>May 2026 - July 2026</span>
+              <span>May 2026 – July 2026</span>
 
               <p class="timeline-text">
                 <ul>
                   <li>Selected for the IASc–INSA–NASI Summer Research Fellowship 2026 under Dr. Prateek Sharma, Department of Physics, Indian Institute of Science (IISc).</li>
-                  <li>Investigating Fast Radio Bursts (FRBs) as probes of the cosmic baryon distribution by analyzing dispersion measures and their implications for the large-scale distribution of baryonic matter in the Universe.</li>
+                  <li>Evaluated the Macquart relation (DM_cosmic–z) to constrain the cosmic baryon density parameter Ω_b and diffuse IGM fraction (f_IGM) using a master catalog of N = 71 localized FRBs from CRAFT/ASKAP, DSA-110, MeerTRAP, and CHIME.</li>
+                  <li>Implemented convolved bivariate log-normal likelihoods for diffuse IGM and intervening halo crossings calibrated on IllustrisTNG hydrodynamical simulations, achieving a 22-fold computational speedup.</li>
+                  <li>Formulated alternative host galaxy DM distributions (Gamma and log-normal models) and conducted multi-tier MCMC analyses investigating host evolution and instrument selection biases.</li>
+                  <li>Demonstrated ~3σ cross-correlations between FRB dispersion measure residuals and galaxy overdensity maps from SDSS DR18 and DESI DR9, providing observational confirmation of cosmic web gas filaments.</li>
                 </ul>
               </p>
 
@@ -484,15 +516,31 @@
 
             <li class="timeline-item">
 
+              <h4 class="h4 timeline-item-title">Developing an Idealized Model for the Monsoon in CliMT</h4>
+
+              <span>August 2026 – Present</span>
+
+              <p class="timeline-text">
+                <ul>
+                  <li>IISER Pune</li>
+                  <li>Semester research project under the guidance of Prof. Joy Merwin Monteiro (Earth & Climate Sciences / Physics).</li>
+                  <li>Constructing idealized numerical climate simulations using CliMT and Sympl to study non-linear tropical monsoon transitions and their sensitivity to land-ocean surface boundary conditions and moisture transport.</li>
+                </ul>
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
               <h4 class="h4 timeline-item-title">FRBs as Probes of the Cosmic Baryon Distribution</h4>
 
-              <span>May 2026 – Present</span>
+              <span>May 2026 – July 2026</span>
 
               <p class="timeline-text">
                 <ul>
                   <li>Indian Institute of Science (IISc), Bengaluru</li>
-                  <li>Working on Fast Radio Bursts (FRBs) as probes of the cosmic baryon distribution under the guidance of Dr. Prateek Sharma at the Department of Physics, Indian Institute of Science (IISc), through the IASc–INSA–NASI Summer Research Fellowship 2026</li>
-                  <li>Studying how FRB dispersion measures can be used to constrain the large-scale distribution of baryonic matter in the Universe using astrophysical data analysis and computational methods.</li>
+                  <li>Completed research project on Fast Radio Bursts (FRBs) as probes of the cosmic baryon distribution under the guidance of Dr. Prateek Sharma at the Department of Physics, Indian Institute of Science (IISc), through the IASc–INSA–NASI Summer Research Fellowship 2026.</li>
+                  <li>Conducted Bayesian MCMC cosmological parameter estimation constraining the diffuse baryon fraction (f_IGM = 0.67) and cosmic baryon density (Ω_b h_70 = 0.0505 ± 0.0046), incorporating IllustrisTNG-calibrated likelihoods and SDSS/DESI cosmic web tomography.</li>
                 </ul>
               </p>
 
@@ -601,7 +649,7 @@
             <li class="skills-item">
 
               <div class="title-wrapper">
-                <h5 class="h5"><u>Programming & Scientific Computing</u>: Python (Astropy, Pandas, Lightkurve, NumPy, SciPy, Matplotlib, Climt, Sympl, Seaborn)</h5>
+                <h5 class="h5"><u>Programming & Scientific Computing</u>: Python (Astropy, Pandas, Lightkurve, NumPy, SciPy, Matplotlib, CliMT, Sympl, Seaborn)</h5>
               </div>
             </li>
 
@@ -904,13 +952,14 @@
 
                 <h3 class="project-title">Reading Project on Quantum Dots: Properties and their Applications</h3>
 
+                <p class="project-category">Supervised literature review under Prof. Pramod Pillai at Nano Alchemy Lab, IISER Pune, investigating visible-light driven photocatalytic nitrate reduction and NADH cofactor regeneration using semiconductor quantum dots.</p>
                 <p class="project-category">Academic</p>
 
               </a>
             </li>
 
             <li class="project-item  active" data-filter-item data-category="Academic">
-              <a href="assets/she_report.pdf">
+              <a href="assets/report.pdf">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
@@ -922,6 +971,26 @@
 
                 <h3 class="project-title">FRBs as Probes of the Cosmic Baryon Distribution</h3>
 
+                <p class="project-category">Completed summer research project at IISc Bengaluru under Dr. Prateek Sharma. Evaluated the Macquart relation on N = 71 localized FRBs using convolved bivariate log-normal likelihoods calibrated on IllustrisTNG simulations to constrain the cosmic baryon density and diffuse IGM fraction, corroborated by ~3σ cross-correlations with SDSS and DESI galaxy overdensities.</p>
+                <p class="project-category">Academic</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="Academic">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="assets/general_circulation.jpg" alt="Developing an Idealized Model for the Monsoon in CliMT" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Developing an Idealized Model for the Monsoon in CliMT</h3>
+
+                <p class="project-category">Semester research project under Prof. Joy Merwin Monteiro (Earth & Climate Sciences / Physics, IISER Pune). Constructing idealized climate and atmospheric general circulation simulations using CliMT and Sympl to study tropical monsoon dynamics, ITCZ seasonal migrations, and sensitivity to land-ocean thermal configurations.</p>
                 <p class="project-category">Academic</p>
 
               </a>
