@@ -224,15 +224,14 @@ function filterFunc(selectedValue) {
       height = canvas.height = window.innerHeight;
     });
 
-    window.addEventListener("mousemove", (e) => {
-      targetMouseX = e.clientX;
-      targetMouseY = e.clientY;
+    const handlePointerMove = (clientX, clientY, spawnRate = 0.6) => {
+      targetMouseX = clientX;
+      targetMouseY = clientY;
 
-      // Spawn subtle starlight particles along cursor movement
-      if (Math.random() < 0.6) {
+      if (Math.random() < spawnRate) {
         particles.push({
-          x: e.clientX + (Math.random() - 0.5) * 8,
-          y: e.clientY + (Math.random() - 0.5) * 8,
+          x: clientX + (Math.random() - 0.5) * 8,
+          y: clientY + (Math.random() - 0.5) * 8,
           radius: Math.random() * 2 + 1,
           alpha: 0.6,
           vx: (Math.random() - 0.5) * 0.8,
@@ -240,7 +239,23 @@ function filterFunc(selectedValue) {
           color: Math.random() > 0.4 ? "255, 217, 102" : "56, 189, 248" // Warm gold or cyan
         });
       }
+    };
+
+    window.addEventListener("mousemove", (e) => {
+      handlePointerMove(e.clientX, e.clientY, 0.6);
     });
+
+    window.addEventListener("touchmove", (e) => {
+      if (e.touches && e.touches.length > 0) {
+        handlePointerMove(e.touches[0].clientX, e.touches[0].clientY, 0.35);
+      }
+    }, { passive: true });
+
+    window.addEventListener("touchstart", (e) => {
+      if (e.touches && e.touches.length > 0) {
+        handlePointerMove(e.touches[0].clientX, e.touches[0].clientY, 0.5);
+      }
+    }, { passive: true });
 
     function animateGlow() {
       ctx.clearRect(0, 0, width, height);
